@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const AddCoffee = () => {
   const handleAddCoffee = (event) => {
@@ -32,7 +33,17 @@ const AddCoffee = () => {
       body: JSON.stringify(newCoffee),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Coffee Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
 
   return (
@@ -149,3 +160,59 @@ const AddCoffee = () => {
 };
 
 export default AddCoffee;
+
+// Pinged your deployment. You successfully connected to MongoDB!
+// {
+//   name: 'First Coffee',
+//   supplier: 'StarSucks',
+//   taste: 'Bitter',
+//   quantity: '2000',
+//   details: 'You can waste money and be happy',
+//   category: 'Black Coffee',
+//   photo: 'https://ibb.co/jfKHD3P'
+// }
+// {
+//   name: 'Sweet Coffee',
+//   supplier: 'Misti',
+//   taste: 'Sweety',
+//   quantity: '1532',
+//   details: 'Useful for diabetics',
+//   category: 'Coffee',
+//   photo: 'https://i.ibb.co/Bs7SfY1/2.png'
+// }
+// {
+//   name: 'Drip Coffee',
+//   supplier: 'FavCoffee',
+//   taste: 'Sweety',
+//   quantity: '1823',
+//   details: 'This is a common type of coffee at home and in many restaurants',
+//   category: 'Coffee',
+//   photo: 'https://i.ibb.co/LkwWF9K/3.png'
+// }
+// {
+//   name: 'Cold Brew Coffee',
+//   supplier: 'Red Diamond',
+//   taste: 'Strong and intense flavor with no bitterness.',
+//   quantity: '1240',
+//   details: 'If you want the perfect, smooth cup of coffee, cold brew is the way to go.',
+//   category: 'Cold Coffee',
+//   photo: 'https://i.ibb.co/C0ZSP4D/4.png'
+// }
+// {
+//   name: 'Percolated Coffee',
+//   supplier: 'Westrock Coffee Company',
+//   taste: 'Sweety',
+//   quantity: '2200',
+//   details: 'Percolated coffee is brewed in a stove-top or electric stand-alone unit',
+//   category: 'Regular Coffee',
+//   photo: 'https://i.ibb.co/0KxSXGS/5.png'
+// }
+// {
+//   name: 'Vacuum Coffee',
+//   supplier: '\tMother Parkers',
+//   taste: 'light sweety',
+//   quantity: '1568',
+//   details: 'a vacuum coffee maker involves a complex system of glass flasks and siphon tubes that look more like a chemistry lab',
+//   category: 'Coffee',
+//   photo: 'https://i.ibb.co/4jY776r/6.png'
+// }
